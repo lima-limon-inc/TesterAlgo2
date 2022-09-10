@@ -87,7 +87,7 @@ Muy facil! Una vez copies el archivo en el directorio con tus programas simpleme
 
 ## TODO
 Cosas que quedan por hacer
-- [ ] Que el programa se encarge de toda la parte de go mod, lo del go work y eso
+- [X] Que el programa se encarge de toda la parte de go mod, lo del go work y eso
 - [ ] Hacer que el programa chequee que tenes una version de go mayor a 1.18
 - [ ] Anadir una flag de "modo silencioso"
 - [ ] Anadir una flag de "no testear"
