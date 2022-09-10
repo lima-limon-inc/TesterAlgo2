@@ -15,10 +15,12 @@ chmod u+x testear.sh
 - +x: Añade permiso de ejecucion
 - tester.sh: El archivo al que queremos aplicarle todo lo de arriba
 
-Para testear que quedo todo bien pueden correr `ls -l` y deberia verse algo asi:
+Para testear que quedo todo bien pueden correr 
 ```
--rwx------ 1 <usuario> <grupo> <peso> <fecha> testear.sh
+ls -l
 ```
+Y deberia verse algo asi:
+> -rwx------ 1 <usuario> <grupo> <peso> <fecha> testear.sh
 
 Con una "x" en la 4ta posicion del primer campo. Si ademas tienen "x" en alguna otra posicion, tambien deberia funcionar
 
