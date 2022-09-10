@@ -8,22 +8,30 @@ Ejemplo: ./testear.sh hola_mundo.go
 	exit 2 #Paso 2 como error porque el usuario no paso los archivos necesarios
 fi
 
-if [ ! -f "$1" ] 
+if [ ! -f "$1" ]
 then
-	echo '''
-$1 no existe :(
-'''
+	echo #No me gusta nada este echo vacio, lo puse porque no se como lograr usar un echo ''' que pueda imprimir la primera variable pasada al programa $1. Pull requests mas que bienvenidos
+	echo $1 no existe
+	echo
 	exit 2 #Paso 2 como error porque el usuario no paso un archivo existente
 fi
 
+if [ ".go" != $(echo -n $1 | tail -c 3) ]
+then
+	echo '''
+Tenes que pasarme un archivo ".go"
+	'''
+	exit 2 #Paso 2 como error porque el usuario no paso un archivo existente
+fi
 
+sinExtension=${1:: -3} #Creo una variable del archivo a compilar sin la extension para facilitar los comandos que le siguen
 
 echo "Dandole formato"
-go fmt "$1.go"
+go fmt "$1"
 
 echo "Compilando el programa a ejecutable"
-go build -o "$1"
+go build -o "$sinExtension"
 
 #echo "Comienzo del testeo"
-#go test 
+#go test
 go version
