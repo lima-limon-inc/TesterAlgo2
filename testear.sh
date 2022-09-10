@@ -1,7 +1,13 @@
 #!/bin/sh
-#Algo2Tester version 1.1
+#Algo2Tester version 1.2
 #Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
 
+if [ 18 -gt $(go version | cut -d " " -f 3 | cut -d "." -f 2) ]
+then
+	echo "Cuidado, para la materia de algoritmos 2 con Buchwald necesitas un version de Go mayor o igual a 1.18"
+	echo "Tu version es:"
+	go version
+fi
 
 if [ ! -f "go.mod" ]
 then

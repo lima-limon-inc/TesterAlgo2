@@ -2,6 +2,7 @@
 ## Que hace?
 Mini mini Shell script que lo podes correr 1 sola vez y logra:
 
+- Chequea que tengas la version de go correcta
 - Te estructura todos los modulos (toda la parte de go work init, go work use, etc)
 - Formatear tu programa
 - Compilarlo
@@ -88,7 +89,7 @@ Muy facil! Una vez copies el archivo en el directorio con tus programas simpleme
 ## TODO
 Cosas que quedan por hacer
 - [X] Que el programa se encarge de toda la parte de go mod, lo del go work y eso
-- [ ] Hacer que el programa chequee que tenes una version de go mayor a 1.18
+- [X] Hacer que el programa chequee que tenes una version de go mayor a 1.18
 - [ ] Anadir una flag de "modo silencioso"
 - [ ] Anadir una flag de "no testear"
 - [ ] Anadir un --help
