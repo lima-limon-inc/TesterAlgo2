@@ -8,6 +8,16 @@ Ejemplo: ./testear.sh hola_mundo.go
 	exit 2 #Paso 2 como error porque el usuario no paso los archivos necesarios
 fi
 
+if [ ! -f "$1" ] 
+then
+	echo '''
+$1 no existe :(
+'''
+	exit 2 #Paso 2 como error porque el usuario no paso un archivo existente
+fi
+
+
+
 echo "Dandole formato"
 go fmt "$1.go"
 
