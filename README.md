@@ -1,6 +1,8 @@
 # Tester de Algoritmos 2
 ## Que hace?
 Mini mini Shell script que lo podes correr 1 sola vez y logra:
+
+- Te estructura todos los modulos (toda la parte de go work init, go work use, etc)
 - Formatear tu programa
 - Compilarlo
 - Testearlo
