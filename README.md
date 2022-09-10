@@ -20,7 +20,7 @@ Para testear que quedo todo bien pueden correr
 ls -l
 ```
 Y deberia verse algo asi:
-> -rwx------ 1 <usuario> <grupo> <peso> <fecha> testear.sh
+> -rwx------ 1 usuario grupo peso fecha testear.sh
 
 Con una "x" en la 4ta posicion del primer campo. Si ademas tienen "x" en alguna otra posicion, tambien deberia funcionar
 
