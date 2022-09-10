@@ -1,4 +1,8 @@
 #!/bin/sh
+#Algo2Tester version 1.0
+#Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
+
+
 if [ -z "$1" ]
 then
 	echo "
@@ -41,6 +45,5 @@ No hay ningun archivo de testeo. Necesito algo del estilo de ${sinExtension}_tes
 	exit 2 #Paso 2 como error porque el usuario no paso un archivo sin un test asociado a ese
 fi
 
-#echo "Comienzo del testeo"
-#go test
-go version
+echo "Comienzo del testeo"
+go test ${sinExtension}_test.go

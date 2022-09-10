@@ -27,3 +27,4 @@ Con una "x" en la 4ta posicion del primer campo. Si ademas tienen "x" en alguna 
 ## TODO
 Cosas que quedan por hacer
 - [ ] Que el programa se encarge de toda la parte de go mod, lo del go work y eso
+- [ ] Hacer que el programa chequee que tenes una version de go mayor a 1.18
