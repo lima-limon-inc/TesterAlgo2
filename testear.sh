@@ -2,6 +2,27 @@
 #Algo2Tester version 1.0
 #Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
 
+if [ ! -f "go.mod" ]
+then
+	echo "
+No te olvides de que en go hay que iniciar el modulo (sea lo que sea que eso signifique). 
+"
+	while true; do 
+		read -p "Queres que te ayude a crearlo? (si|no)" rta
+		case $rta in
+			[nN]o)
+				echo "Joya, volve cuando lo tengas todo listo entonces"
+				exit 0 ;; #Paso 0 porque todo salio bien, el usuario decidio salir
+			[sS]i)
+				echo "Genial. Le voy a poner el nombre de la carpeta en la que estamos de nombre al modulo"
+				echo "Creando modulo"
+				go mod init $(basename $(pwd));;
+			* )
+				echo "No entendi, por favor responde 'no' o 'si'"
+		esac	
+	done
+	exit 2 #Paso 2 como error porque el usuario no creo el modulo correspondiente
+fi
 
 if [ -z "$1" ]
 then
