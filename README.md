@@ -6,7 +6,7 @@ Mini mini Shell script que lo podes correr 1 sola vez y logra:
 - Testearlo
 
 ## Como descargarlo?
-Recomiendo tener algun directorio en el directorio home (el directorio donde "arranca" el shell, tambien abreviado como "~") llamado "Scripts". Para el resto de la guia voy a usar la direccion `~/Scripts` como ejemplo. Si te guardas el archivo en algun otro lado reemplaza
+Recomiendo tener algun directorio llamado "Scripts" en el directorio home (el directorio donde "arranca" el shell, tambien abreviado como "~"). Para el resto de la guia voy a usar la direccion `~/Scripts` como ejemplo. Si te guardas el archivo en algun otro lado reemplaza
 ### Paso 1: Descargar archivo de Github
 #### Manera 1: La vieja confiable: Ctrl+C; Ctrl+V
 Create un directorio "TesterAlgo2" en tu directorio de Scripts. Si seguiste lo recomendado podes ejecutar el siguiente comando:
@@ -61,7 +61,7 @@ Listo \\:D/
 Lo unico que necesitas hacer es copiar el archivo testear.sh en el directorio donde tengas tus archivos para testear y ya esta.
 Con este metodo los comandos van a empezar con `./testear.sh`
 
-#### Paso 3.5: Hacer el archivo ejecutable sin necesidad de copiarlo en todos lados (recomendado, aunque no obligatorio)
+### Paso 4: Hacer el archivo ejecutable sin necesidad de copiarlo en todos lados (recomendado, aunque no obligatorio)
 Podes hacer que el programa sea accesible desde cualquier lado de tu computadora si necesidad de copiar y pegar el archivo.
 Simplemente tenes que añadir el directorio donde tenes el programa al PATH.
 
@@ -81,7 +81,7 @@ source ~/.bashrc
 5. Listo, si todo funciono bien, podes usar el comando `testear.sh`(sin el ./) en cualquier lado
 
 ## Como usarlo?
-Muy facil! Una vez copies el archivo en el directorio con tus programas simplemente corre `./testear.sh archivo.go` (si hicite el Paso 3.5 podes usar directamente `testear.sh archivo.go` y no hace falta que copies el archivo)
+Muy facil! Una vez copies el archivo en el directorio con tus programas simplemente corre `./testear.sh archivo.go` (si hicite el Paso 4 podes usar directamente `testear.sh archivo.go` y no hace falta que copies el archivo)
 
 ## TODO
 Cosas que quedan por hacer
