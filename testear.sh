@@ -26,7 +26,6 @@ fi
 
 sinExtension=${1:: -3} #Creo una variable del archivo a compilar sin la extension para facilitar los comandos que le siguen
 
-
 echo "Dandole formato"
 go fmt "$1"
 
