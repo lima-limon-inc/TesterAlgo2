@@ -11,12 +11,14 @@ No te olvides de que en go hay que iniciar el modulo (sea lo que sea que eso sig
 		read -p "Queres que te ayude a crearlo? (si|no)" rta
 		case $rta in
 			[nN]o)
-				echo "Joya, volve cuando lo tengas todo listo entonces"
+				echo "
+Joya, volve cuando lo tengas todo listo entonces"
 				exit 0 ;; #Paso 0 porque todo salio bien, el usuario decidio salir
 			[sS]i)
 				echo "Genial. Le voy a poner el nombre de la carpeta en la que estamos de nombre al modulo"
 				echo "Creando modulo"
-				go mod init $(basename $(pwd));;
+				go mod init $(basename $(pwd))
+				break;;
 			* )
 				echo "No entendi, por favor responde 'no' o 'si'"
 		esac	
