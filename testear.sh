@@ -1,18 +1,18 @@
 #!/bin/sh
 if [ -z "$1" ]
 then
-	echo '''
+	echo "
 Tenes que pasar un archivo como primer parametro para que el programa funcione.
 Ejemplo: ./testear.sh hola_mundo.go
-'''
+"
 	exit 2 #Paso 2 como error porque el usuario no paso los archivos necesarios
 fi
 
 if [ ! -f "$1" ]
 then
-	echo #No me gusta nada este echo vacio, lo puse porque no se como lograr usar un echo ''' que pueda imprimir la primera variable pasada al programa $1. Pull requests mas que bienvenidos
-	echo $1 no existe
-	echo
+	echo " 
+${1} no existe
+	"
 	exit 2 #Paso 2 como error porque el usuario no paso un archivo existente
 fi
 
@@ -35,9 +35,10 @@ go build -o "$sinExtension"
 
 if [ ! -f "${sinExtension}_test.go" ]
 then
-	echo #No me gusta nada este echo vacio, lo puse porque no se como lograr usar un echo ''' que pueda imprimir la primera variable pasada al programa $1. Pull requests mas que bienvenidos
-	echo "No hay ningun archivo de testeo. Algo del estilo de ${sinExtension}_test.go"
-	echo
+	echo "
+No pude testear :(
+No hay ningun archivo de testeo. Necesito algo del estilo de ${sinExtension}_test.go
+	"
 	exit 2 #Paso 2 como error porque el usuario no paso un archivo sin un test asociado a ese
 fi
 
