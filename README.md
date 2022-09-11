@@ -95,3 +95,5 @@ Cosas que quedan por hacer
 - [X] Anadir un --help
 - [ ] Anadir flag stacking de las flags anteriores
 - [ ] Corregir tildes y ortografia
+- [ ] Hacer el formato de los echos mas lindos
+- [ ] Hacer el programa mas suave, tal vez con la adicion de algunos sleeps de breves segundos
