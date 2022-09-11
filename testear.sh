@@ -1,9 +1,9 @@
 #!/bin/sh
-#Algo2Tester version 1.3
+#Algo2Tester version 1.4
 #Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
 
 #Variables
-opciones="hsn" #Todas las flags que se le pueden pasar al programa
+opciones=":snh" #Todas las flags que se le pueden pasar al programa
 silent=1 #Si silent == 0, entonces queremos que el programa produzca la menor cantidad de texto. Si alguien tiene una solucion mas elegante esta mas que bienvenida
 testear=0 #Si testear ==0, entonces el codigo se va a pasar por el testeo, si es igual a 1, entonces no se testea. Solo lo formatea y lo compila. Similar a un go run
 
@@ -18,20 +18,29 @@ Print () {
 
 Help () {
 
+echo "
+Algo2Tester. Programa 'wrapper' del compilador de go y todas sus peculiaridades. 
 
+Formato de los comandos:
+testear.sh -opciones archivo.go
 
+Opciones disponibles: (En la version actual no se pueden combinar y usar mas de una)
+-h: Ayuda
+-n: NO testear, simplemente se formatea y compila el cogigo. Similar a un go run (pero no lo ejecuta)
+-s: SILENCIOSO: Da menos output a la pantalla
+"
+	exit 0 #Salgo deel programa porque el usuario pidio ver la ayuda
 }
 
 
-while getopts "ac" opt
+while getopts $opciones opt
 do
 	case "${opt}" in
-	s) silent=0 ;;
-	t) testear=1 ;;
-	h) Help ;;
-	*) echo "Unkown option: $opt"
+	s) silent=0; shift ;;
+	n) testear=1; shift ;;
+	 h | help ) Help ;;
+	\?) echo "Opcion desconocida $OPTARG"; exit 1 ;;
 	esac
-	shift
 done
 
 
@@ -112,6 +121,14 @@ go fmt "$1"
 Print "Compilando el programa a ejecutable"
 go build -o "$sinExtension"
 
+
+
+# De aca para abajo tiene que ver con el testeo del programa
+if [ $testear -eq 1 ]
+then
+	exit 0 #Paso 0 porque el usuario decidio no testear
+fi
+
 if [ ! -f "${sinExtension}_test.go" ]
 then
 	echo "
@@ -121,5 +138,5 @@ No hay ningun archivo de testeo. Necesito algo del estilo de ${sinExtension}_tes
 	exit 2 #Paso 2 como error porque el usuario no paso un archivo sin un test asociado a ese
 fi
 
-echo "Comienzo del testeo"
+Print "Comienzo del testeo"
 go test ${sinExtension}_test.go
