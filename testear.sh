@@ -3,7 +3,10 @@
 #Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
 
 #Variables
-silent=1 #Si silent == 0, entonces queremos que el programa produzca la menor cantidad de texto.
+opciones="hsn" #Todas las flags que se le pueden pasar al programa
+silent=1 #Si silent == 0, entonces queremos que el programa produzca la menor cantidad de texto. Si alguien tiene una solucion mas elegante esta mas que bienvenida
+testear=0 #Si testear ==0, entonces el codigo se va a pasar por el testeo, si es igual a 1, entonces no se testea. Solo lo formatea y lo compila. Similar a un go run
+
 
 Print () {
 	if [ $silent -eq 0 ] #Si se cumple esta condicion no queremos que se imprima nada
@@ -12,6 +15,25 @@ Print () {
 	fi
 	echo "$1"
 }
+
+Help () {
+
+
+
+}
+
+
+while getopts "ac" opt
+do
+	case "${opt}" in
+	s) silent=0 ;;
+	t) testear=1 ;;
+	h) Help ;;
+	*) echo "Unkown option: $opt"
+	esac
+	shift
+done
+
 
 
 if [ 18 -gt $(go version | cut -d " " -f 3 | cut -d "." -f 2) ]
