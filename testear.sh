@@ -1,6 +1,18 @@
 #!/bin/sh
-#Algo2Tester version 1.2
+#Algo2Tester version 1.3
 #Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
+
+#Variables
+silent=1 #Si silent == 0, entonces queremos que el programa produzca la menor cantidad de texto.
+
+Print () {
+	if [ $silent -eq 0 ] #Si se cumple esta condicion no queremos que se imprima nada
+	then 
+		return 0
+	fi
+	echo "$1"
+}
+
 
 if [ 18 -gt $(go version | cut -d " " -f 3 | cut -d "." -f 2) ]
 then
@@ -22,22 +34,22 @@ No te olvides de que en go hay que iniciar el modulo (sea lo que sea que eso sig
 Joya, volve cuando lo tengas todo listo entonces"
 				exit 0 ;; #Paso 0 porque todo salio bien, el usuario decidio salir
 			[sS]i)
-				echo "Genial. Le voy a poner el nombre de la carpeta en la que estamos de nombre al modulo"
-				echo "Creando modulo"
+				Print "Genial. Le voy a poner el nombre de la carpeta en la que estamos de nombre al modulo"
+				Print "Creando modulo"
 				modulo=$(basename $(pwd))
 				go mod init $modulo
-				echo "Ejecuto go mod tidy (Por las dudas, nunca viene mal"
+				Print "Ejecuto go mod tidy (Por las dudas, nunca viene mal"
 				go mod tidy
 				if [ ! -f "../go.work" ]
 				then
-					echo "
+					Print "
 Ojo, tene cuidado que te falta archivo go.work en el directorio padre. Eso normalmente se hace ejecutando 'go work init' en el directorio padre"
-					echo "No te preocupues, ya lo hago yo por vos"
+					Print "No te preocupues, ya lo hago yo por vos"
 					( cd .. ; go work init )
 				fi
-				echo "Me voy al directorio padre, activo el modulo y vuelvo"
+				Print "Me voy al directorio padre, activo el modulo y vuelvo"
 				( cd .. ; go work use $modulo )
-				echo "Listo todo creado y toda la parte de los modulos hecha"
+				Print "Listo todo creado y toda la parte de los modulos hecha"
 				break;;
 			* )
 				echo "Disculpame, no entendi, por favor responde 'no' o 'si'"
@@ -72,10 +84,10 @@ fi
 
 sinExtension=${1:: -3} #Creo una variable del archivo a compilar sin la extension para facilitar los comandos que le siguen
 
-echo "Dandole formato"
+Print "Dandole formato"
 go fmt "$1"
 
-echo "Compilando el programa a ejecutable"
+Print "Compilando el programa a ejecutable"
 go build -o "$sinExtension"
 
 if [ ! -f "${sinExtension}_test.go" ]
