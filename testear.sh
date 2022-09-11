@@ -1,5 +1,5 @@
 #!/bin/sh
-#Algo2Tester version 1.4
+#Algo2Tester version 1.5
 #Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
 
 #Variables
