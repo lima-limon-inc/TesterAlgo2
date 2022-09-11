@@ -36,13 +36,13 @@ Opciones disponibles: (En la version actual no se pueden combinar y usar mas de 
 while getopts $opciones opt
 do
 	case "${opt}" in
-	s) silent=0; shift ;;
-	n) testear=1; shift ;;
-	 h | help ) Help ;;
+	s) silent=0 ;;
+	n) testear=1;;
+	h | help ) Help ;;
 	\?) echo "Opcion desconocida $OPTARG"; exit 1 ;;
 	esac
+	shift
 done
-
 
 
 if [ 18 -gt $(go version | cut -d " " -f 3 | cut -d "." -f 2) ]
