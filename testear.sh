@@ -1,5 +1,5 @@
 #!/bin/sh
-#Algo2Tester version 1.5
+#Algo2Tester version 1.6
 #Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
 
 #Variables (0 = si, 1 = no)
