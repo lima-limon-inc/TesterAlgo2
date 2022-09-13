@@ -123,7 +123,7 @@ go fmt "$1"
 
 if [ $unico -eq 1 ]
 then
-	for f in ./"$sinExtension"?.go; do #Matchea todos los archivos que no son el archivo pasado
+	for f in ./"$sinExtension"?*.go; do #Matchea todos los archivos que no son el archivo pasado
 		Print "Dandole formato a "$f""
 		go fmt "$f"
 	done
