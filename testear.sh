@@ -2,15 +2,16 @@
 #Algo2Tester version 1.5
 #Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
 
-#Variables
-opciones=":snh" #Todas las flags que se le pueden pasar al programa
+#Variables (0 = si, 1 = no)
+opciones=":snhu" #Todas las flags que se le pueden pasar al programa
 silent=1 #Si silent == 0, entonces queremos que el programa produzca la menor cantidad de texto. Si alguien tiene una solucion mas elegante esta mas que bienvenida
-testear=0 #Si testear ==0, entonces el codigo se va a pasar por el testeo, si es igual a 1, entonces no se testea. Solo lo formatea y lo compila. Similar a un go run
+testear=0 #Si testear == 0, entonces el codigo se va a pasar por el testeo, si es igual a 1, entonces no se testea. Solo lo formatea y lo compila. Similar a un go run
+unico=1 #Si unico == 0, entonces solo se va a formatear el archivo que pasa el usuario, sino se formatean todos los archivos
 
 
 Print () {
 	if [ $silent -eq 0 ] #Si se cumple esta condicion no queremos que se imprima nada
-	then 
+	then
 		return 0
 	fi
 	echo "$1"
@@ -19,15 +20,16 @@ Print () {
 Help () {
 
 echo "
-Algo2Tester. Programa 'wrapper' del compilador de go y todas sus peculiaridades. 
+Algo2Tester. Programa 'wrapper' del compilador de go y todas sus peculiaridades.
 
 Formato de los comandos:
 testear.sh -opciones archivo.go
 
 Opciones disponibles: (En la version actual no se pueden combinar y usar mas de una)
--h: Ayuda
+-h: Help, Ayuda
 -n: NO testear, simplemente se formatea y compila el cogigo. Similar a un go run (pero no lo ejecuta)
 -s: SILENCIOSO: Da menos output a la pantalla
+-u: UNICAMENTE: Unicamente formatea el archivo que te paso, no todos los .go del directorio. (No es altamente recomendado, no se gana mucho tiempo y nunca esta de mas 'volver a formatear' un archivo ya formateado
 "
 	exit 0 #Salgo deel programa porque el usuario pidio ver la ayuda
 }
@@ -38,6 +40,7 @@ do
 	case "${opt}" in
 	s) silent=0 ;;
 	n) testear=1;;
+	u) unico=0;;
 	h | help ) Help ;;
 	\?) echo "Opcion desconocida $OPTARG"; exit 1 ;;
 	esac
@@ -115,15 +118,19 @@ fi
 
 sinExtension=${1:: -3} #Creo una variable del archivo a compilar sin la extension para facilitar los comandos que le siguen
 
-for f in ./"$sinExtension"*.go; do
-	Print "Dandole formato a "$f""
-	go fmt "$f"
-done
+Print "Dandole formato a "$1""
+go fmt "$1"
+
+if [ $unico -eq 1 ]
+then
+	for f in ./"$sinExtension"?.go; do #Matchea todos los archivos que no son el archivo pasado
+		Print "Dandole formato a "$f""
+		go fmt "$f"
+	done
+fi
 
 Print "Compilando "$1" a ejecutable"
 go build -o "$sinExtension"
-
-
 
 # De aca para abajo tiene que ver con el testeo del programa
 if [ $testear -eq 1 ]
