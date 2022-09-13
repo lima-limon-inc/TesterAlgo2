@@ -115,10 +115,12 @@ fi
 
 sinExtension=${1:: -3} #Creo una variable del archivo a compilar sin la extension para facilitar los comandos que le siguen
 
-Print "Dandole formato"
-go fmt "$1"
+for f in ./"$sinExtension"*.go; do
+	Print "Dandole formato a "$f""
+	go fmt "$f"
+done
 
-Print "Compilando el programa a ejecutable"
+Print "Compilando "$1" a ejecutable"
 go build -o "$sinExtension"
 
 
