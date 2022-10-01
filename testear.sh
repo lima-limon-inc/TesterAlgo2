@@ -1,5 +1,5 @@
 #!/bin/sh
-#Algo2Tester version 1.6
+#Algo2Tester version 1.6.2
 #Repositorio de github: https://github.com/lima-limon-inc/TesterAlgo2
 
 #Variables (0 = si, 1 = no)
@@ -123,7 +123,7 @@ go fmt "$1"
 
 if [ $unico -eq 1 ]
 then
-	for f in ./"$sinExtension"?*.go; do #Matchea todos los archivos que no son el archivo pasado
+	for f in ./$sinExtension*.go; do #Matchea todos los archivos que no son el archivo pasado
 		Print "Dandole formato a "$f""
 		go fmt "$f"
 	done
