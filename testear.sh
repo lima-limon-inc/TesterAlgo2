@@ -130,7 +130,7 @@ then
 fi
 
 Print "Compilando "$1" a ejecutable"
-go build -o "$sinExtension"
+go build "$sinExtension"
 
 # De aca para abajo tiene que ver con el testeo del programa
 if [ $testear -eq 1 ]
